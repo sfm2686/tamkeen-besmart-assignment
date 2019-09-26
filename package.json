@@ -1,0 +1,27 @@
+{
+  "name": "tamkeen-besmart-assignment",
+  "version": "1.0.0",
+  "description": "Tamkeen Besmart Coding Assignment",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.2"
+  },
+  "scripts": {
+    "dev": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sfm2686/tamkeen-besmart-assignment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sfm2686/tamkeen-besmart-assignment/issues"
+  },
+  "homepage": "https://github.com/sfm2686/tamkeen-besmart-assignment#readme"
+}
