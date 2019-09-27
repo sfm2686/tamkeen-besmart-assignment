@@ -6,25 +6,27 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    // this.state = {
-    //  countries: "",
-    //  curr_country: "",
-    //  cities: "",
-    //  loading: true
-    // };
-    // this.getDataFromDb = this.getDataFromDb.bind(this);
+    this.state = {
+      name: "",
+      email: "",
+      age: "",
+      country: "",
+      city: ""
+    }
+    this.submit = this.submit.bind(this);
+  }
+
+  submit() {
+    // front end validation
+    // send data to nodejs backend
   }
 
   getDataFromDb() {
-    // fetch('http://localhost:8080/')
-    //   .then((data) => return data.json());
     fetch('http://localhost:8080/get-country-list')
     .then(res => res.json())
     .then((data) => {this.setState({data: data})});
   }
 
-// I'M READY TO USE THE BACK END APIS! :-) method_call:{this.getDataFromDb()} {this.state.data}
-// <Select />
   render() {
     return (
       <div>
@@ -45,7 +47,7 @@ class App extends Component {
           <br/>
           <Select />
           <br/>
-          <button class="btn btn-primary">Submit</button>
+          <button onSubmit={this.submit()} class="btn btn-primary">Submit</button>
         </form>
       </div>
     );

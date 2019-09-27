@@ -50,7 +50,7 @@ app.get('/get-cities', (req, res) => {
 });
 
 app.get('/submission-data', (req, res) => {
-  console.log(req.body);
+  // use validators module to validate data
   obj = {
     "name": req.query.name,
     "email": req.query.email,
