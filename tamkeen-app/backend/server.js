@@ -3,6 +3,7 @@ const express = require('express');
 var cors = require('cors');
 const bodyParser = require('body-parser');
 const Data = require('./data');
+const validators = require('./validators');
 
 const API_PORT = 8080;
 const app = express();
@@ -16,8 +17,8 @@ let dbCon = mongoose.connection;
 dbCon.once('open', () => console.log('Connected to DB'));
 dbCon.on('error', console.error.bind(console, 'DB connection error:'));
 
-app.use(express.urlencoded({extended:false}))
-app.use(express.json())
+app.use(express.urlencoded({extended:false}));
+app.use(express.json());
 
 const server = app.listen(8080, () => {
         const host = server.address().address,
@@ -46,4 +47,23 @@ app.get('/get-cities', (req, res) => {
         res.type("json").send(JSON.stringify(data[0]['cities']));
       });
   });
+});
+
+app.get('/submission-data', (req, res) => {
+  console.log(req.body);
+  obj = {
+    "name": req.query.name,
+    "email": req.query.email,
+    "age": req.query.age,
+    "country": req.query.country,
+    "city": req.query.city
+  }
+  dbCon.collection("users").insertOne(obj, function(err, res) {
+    if (err) {
+      console.log('asdas');
+      throw err;
+    }
+    console.log("1 document inserted");
+  });
+  res.type("json").send(JSON.stringify("Success"));
 });
